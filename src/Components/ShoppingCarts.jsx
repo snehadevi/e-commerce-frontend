@@ -34,7 +34,8 @@ const products = [
 ];
 
 export default function ShoppingCarts() {
-  const { open, setOpen, selectedProducts } = useContext(Context);
+  const { open, setOpen, selectedProducts, setcountTotal } =
+    useContext(Context);
 
   const handleChange = (e) => {
     const inputValue = e.target.value;

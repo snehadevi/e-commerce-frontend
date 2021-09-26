@@ -9,57 +9,75 @@ import { Context } from "../../Context API/GlobalContext";
 
 function Product({ product }) {
   const [hidden, sethidden] = useState(true);
-  const { products, countTotal, setcountTotal, selectedProducts } =
-    useContext(Context);
-  const [count, setcount] = useState(product.count);
+  const {
+    products,
+    countTotal,
+    setcountTotal,
+    selectedProducts,
+    setselectedProducts,
+  } = useContext(Context);
+
+  const index = selectedProducts.findIndex((item) => item.id === product.id);
+  const count = index !== -1 ? selectedProducts[index].count : 0;
+
+  function calculateTotalCount() {
+    let count = 0;
+    selectedProducts.map((p) => {
+      if (p.count) count += p.count;
+    });
+    return count;
+  }
 
   const handleIncrease = () => {
     sethidden(false);
-    const index = products.findIndex((item) => item.id === product.id);
-    products[index].count += 1;
-    setcount(products[index].count);
-    let tempCount = countTotal + 1;
-    setcountTotal(tempCount);
-    handleSelectedProducts(count + 1);
-    //console.log(products);
+    const index = selectedProducts.findIndex((item) => item.id === product.id);
+    if (index !== -1) {
+      var temp = { ...selectedProducts[index] };
+      //console.log(typeof parseInt(temp.count), "eij");
+      selectedProducts[index].count = parseInt(temp.count) + 1;
+      console.log(selectedProducts[index].count);
+      temp.count += 1;
+    } else {
+      const index = products.findIndex((item) => item.id === product.id);
+      var temp = { ...products[index] };
+      temp.count = 1;
+    }
+
+    //setcount(temp.count);
+    handleSelectedProducts(temp);
   };
   const handleDecrease = () => {
-    if (product.count === 1) {
+    if (count === 1) {
       sethidden(true);
     }
-    const index = products.findIndex((item) => item.id === product.id);
-    products[index].count -= 1;
-    setcount(products[index].count);
-    console.log(count, "from");
-    let tempCount = countTotal - 1;
-    setcountTotal(tempCount);
-    handleSelectedProducts(count - 1);
-    //console.log(products);
-  };
-  const handleSelectedProducts = (count) => {
     const index = selectedProducts.findIndex((item) => item.id === product.id);
-    console.log(index);
+    const temp = { ...selectedProducts[index] };
+    console.log(temp);
+    console.log(selectedProducts[index].count);
+    selectedProducts[index].count -= 1;
+    temp.count -= 1;
+
+    //setcount(temp.count);
+  };
+  const handleSelectedProducts = (temp) => {
+    const index = selectedProducts.findIndex((item) => item.id === temp.id);
+    //console.log(index);
     if (index !== -1) {
-      console.log("here");
-      if (count === 0) {
-        const selectedTemp = selectedProducts.filter(
-          (p) => p.id !== product.id
-        );
+      if (temp.count === 0) {
+        //console.log("here");
+        const selectedTemp = selectedProducts.filter((p) => p.id !== temp.id);
+        setselectedProducts(selectedTemp);
       }
     } else {
-      console.log("there", count);
-      if (count > 0) {
-        selectedProducts.push(product);
+      //console.log("there", count);
+      if (temp.count > 0) {
+        selectedProducts.push(temp);
       }
     }
+    let tempCount = calculateTotalCount();
+    setcountTotal(tempCount);
   };
-  // const handleChange = (e) => {
-  //   const inputValue = e.target.value;
-  //   console.log(e.target);
-  //   //product.count = inputValue;
-  //   // const index = products.findIndex((item) => item.id === product.id);
-  //   // products[index].count = inputValue;
-  // };
+
   return (
     <div className="shadow-xl p-3">
       <div className="group relative">
@@ -83,16 +101,25 @@ function Product({ product }) {
           <p className="text-sm font-medium text-gray-900">${product.price}</p>
         </div>
       </div>
-      <div className="justify-between xl:flex flex-row ">
+      <div className="justify-between">
         {hidden && (
-          <a
-            onClick={handleIncrease}
-            href="#"
-            className="justify-center bg-gradient-to-r from-red-600 to-pink-500 rounded-full py-2 px-4 text-gray-50 flex flex-row hover:from-pink-600 hover:to-pink-600 object-bottom"
-          >
-            <ShoppingCartOutline />
-            <h1>Add to cart</h1>
-          </a>
+          <div className="justify-between xl:flex flex-row ">
+            <a
+              onClick={handleIncrease}
+              href="#"
+              className="justify-center bg-gradient-to-r from-red-600 to-pink-500 rounded-full py-2 px-4 text-gray-50 flex flex-row hover:from-pink-600 hover:to-pink-600 object-bottom"
+            >
+              <ShoppingCartOutline />
+              <h1>Add to cart</h1>
+            </a>
+            <a
+              href="#"
+              className="justify-center bg-purple-600 rounded-full py-2 px-4 text-gray-50 my-2 xl:my-0 flex flex-row hover:bg-purple-800 object-bottom"
+            >
+              <ArrowRight />
+              <h1>View Details</h1>
+            </a>
+          </div>
         )}
 
         {!hidden && (
@@ -105,13 +132,13 @@ function Product({ product }) {
             <PlusCircle onClick={handleIncrease} />
           </a>
         )}
-        <a
+        {/* <a
           href="#"
           className="justify-center bg-purple-600 rounded-full py-2 px-4 text-gray-50 my-2 xl:my-0 flex flex-row hover:bg-purple-800 object-bottom"
         >
           <ArrowRight />
           <h1>View Details</h1>
-        </a>
+        </a> */}
       </div>
     </div>
   );

@@ -2,14 +2,26 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../Context API/GlobalContext";
 
 function CartItem({ product }) {
-  const { products, countTotal, setcountTotal } = useContext(Context);
+  const { products, selectedProducts, countTotal, setcountTotal } =
+    useContext(Context);
   const [count, setcount] = useState(product.count);
+
+  function calculateTotalCount() {
+    let count = 0;
+    selectedProducts.map((p) => {
+      if (p.count) count += p.count;
+    });
+    return count;
+  }
+
   const handleChange = (e) => {
     const inputValue = e.target.value;
     console.log(inputValue, "l");
     setcount(inputValue);
-    const index = products.findIndex((item) => item.id === product.id);
-    products[index].count = inputValue;
+    const index = selectedProducts.findIndex((item) => item.id === product.id);
+    selectedProducts[index].count = parseInt(inputValue);
+    const tempCount = calculateTotalCount();
+    setcountTotal(tempCount);
   };
   return (
     <li className="py-6 flex">

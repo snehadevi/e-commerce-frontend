@@ -11,9 +11,10 @@ function GlobalContext(props) {
   const [selectedProducts, setselectedProducts] = useState([]);
   //const selectedProducts = products.filter((product) => product.count > 0);
   const [countTotal, setcountTotal] = useState(0);
-  // var countTotal = 0;
-  // products.map((p) => {
-  //   countTotal += p.count;
+  // var count = 0;
+  // selectedProducts.map((p) => {
+  //   if (p.count) count += p.count;
+  //   setcountTotal(count);
   // });
 
   useEffect(async () => {
@@ -43,6 +44,7 @@ function GlobalContext(props) {
         selectedProducts,
         countTotal,
         setcountTotal,
+        setselectedProducts,
       }}
     >
       {props.children}
