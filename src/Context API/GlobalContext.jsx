@@ -18,7 +18,7 @@ function GlobalContext(props) {
 
   useEffect(async () => {
     if (productList) {
-      console.log("hi");
+      //console.log("hi");
       const data = JSON.parse(productList);
       const newData = data.map((d) => ({ ...d, count: 0 }));
 
