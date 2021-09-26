@@ -37,13 +37,7 @@ export default function ShoppingCarts() {
   const { open, setOpen, selectedProducts, setcountTotal } =
     useContext(Context);
 
-  const handleChange = (e) => {
-    const inputValue = e.target.value;
-    console.log(e.target);
-    //product.count = inputValue;
-    // const index = products.findIndex((item) => item.id === product.id);
-    // products[index].count = inputValue;
-  };
+  const selectedTemp = selectedProducts.filter((p) => p.count !== 0);
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -100,7 +94,7 @@ export default function ShoppingCarts() {
                           role="list"
                           className="-my-6 divide-y divide-gray-200"
                         >
-                          {selectedProducts.map((product) => (
+                          {selectedTemp.map((product) => (
                             <CartItem product={product} key={product.id} />
                           ))}
                         </ul>
