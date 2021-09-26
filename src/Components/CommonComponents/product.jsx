@@ -8,7 +8,6 @@ import {
 import { Context } from "../../Context API/GlobalContext";
 
 function Product({ product }) {
-  const [hidden, sethidden] = useState(true);
   const {
     products,
     countTotal,
@@ -19,6 +18,7 @@ function Product({ product }) {
 
   const index = selectedProducts.findIndex((item) => item.id === product.id);
   const count = index !== -1 ? selectedProducts[index].count : 0;
+  console.log(count, "hii");
 
   function calculateTotalCount() {
     let count = 0;
@@ -29,7 +29,6 @@ function Product({ product }) {
   }
 
   const handleIncrease = () => {
-    sethidden(false);
     const index = selectedProducts.findIndex((item) => item.id === product.id);
     if (index !== -1) {
       var temp = { ...selectedProducts[index] };
@@ -47,9 +46,6 @@ function Product({ product }) {
     handleSelectedProducts(temp);
   };
   const handleDecrease = () => {
-    if (count === 1) {
-      sethidden(true);
-    }
     const index = selectedProducts.findIndex((item) => item.id === product.id);
     const temp = { ...selectedProducts[index] };
     //console.log(temp);
@@ -65,7 +61,7 @@ function Product({ product }) {
     //console.log(index);
     if (index !== -1) {
       if (temp.count === 0) {
-        //console.log("here");
+        console.log("here");
         const selectedTemp = selectedProducts.filter((p) => p.id !== temp.id);
         setselectedProducts(selectedTemp);
       }
@@ -103,7 +99,7 @@ function Product({ product }) {
         </div>
       </div>
       <div className="justify-between">
-        {hidden && (
+        {!count > 0 && (
           <div className="justify-between xl:flex flex-row ">
             <a
               onClick={handleIncrease}
@@ -123,7 +119,7 @@ function Product({ product }) {
           </div>
         )}
 
-        {!hidden && (
+        {count > 0 && (
           <a
             href="#"
             className="justify-center bg-gradient-to-r from-red-600 to-pink-500 rounded-full py-2 px-6 text-gray-50 flex flex-row hover:from-pink-600 hover:to-pink-600 object-bottom"

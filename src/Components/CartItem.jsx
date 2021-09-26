@@ -21,6 +21,7 @@ function CartItem({ product }) {
     setcount(inputValue);
     const index = selectedProducts.findIndex((item) => item.id === product.id);
     if (inputValue !== "") selectedProducts[index].count = parseInt(inputValue);
+    if (parseInt(inputValue) <= 0) selectedProducts[index].count = 0;
     const tempCount = calculateTotalCount();
     setcountTotal(tempCount);
   };
