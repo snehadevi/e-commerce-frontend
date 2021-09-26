@@ -16,10 +16,11 @@ function CartItem({ product }) {
 
   const handleChange = (e) => {
     const inputValue = e.target.value;
-    console.log(inputValue, "l");
+    //console.log(inputValue, "l");
+    //console.log(isNaN(inputValue), inputValue);
     setcount(inputValue);
     const index = selectedProducts.findIndex((item) => item.id === product.id);
-    selectedProducts[index].count = parseInt(inputValue);
+    if (inputValue !== "") selectedProducts[index].count = parseInt(inputValue);
     const tempCount = calculateTotalCount();
     setcountTotal(tempCount);
   };
@@ -45,17 +46,17 @@ function CartItem({ product }) {
                                     {product.description}
                                   </p> */}
         </div>
-        <div className="flex-1 flex items-end justify-between text-sm">
-          <p className="text-gray-500">
-            Qty{" "}
+        <div className="flex-1 flex items-end justify-between text-lg">
+          <div className="text-gray-500 border-4 border-purple-600">
+            {/* Quantity{" "} */}
             <input
-              autoFocus
+              required
               type="number"
               value={count}
-              className="w-8 h-8"
+              className="w-8 h-8 focus:outline-none focus:ring focus:border-blue-300 opacity-100"
               onChange={handleChange}
             />
-          </p>
+          </div>
 
           <div className="flex">
             <button

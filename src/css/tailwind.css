@@ -17,6 +17,11 @@ Use a better box model (opinionated).
   box-sizing: border-box;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  opacity: 1; 
+}
+
 /**
 Use a more readable tab size (opinionated).
 */

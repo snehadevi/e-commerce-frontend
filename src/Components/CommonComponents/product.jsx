@@ -35,7 +35,7 @@ function Product({ product }) {
       var temp = { ...selectedProducts[index] };
       //console.log(typeof parseInt(temp.count), "eij");
       selectedProducts[index].count = parseInt(temp.count) + 1;
-      console.log(selectedProducts[index].count);
+      //console.log(selectedProducts[index].count);
       temp.count += 1;
     } else {
       const index = products.findIndex((item) => item.id === product.id);
@@ -52,12 +52,13 @@ function Product({ product }) {
     }
     const index = selectedProducts.findIndex((item) => item.id === product.id);
     const temp = { ...selectedProducts[index] };
-    console.log(temp);
-    console.log(selectedProducts[index].count);
-    selectedProducts[index].count -= 1;
+    //console.log(temp);
+    selectedProducts[index].count = parseInt(temp.count) - 1;
+    //console.log(selectedProducts[index].count);
     temp.count -= 1;
 
     //setcount(temp.count);
+    handleSelectedProducts(temp);
   };
   const handleSelectedProducts = (temp) => {
     const index = selectedProducts.findIndex((item) => item.id === temp.id);
