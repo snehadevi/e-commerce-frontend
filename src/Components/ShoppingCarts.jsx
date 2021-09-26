@@ -5,37 +5,14 @@ import { ShoppingCart } from "heroicons-react";
 import { Context } from "../Context API/GlobalContext";
 import CartItem from "./CartItem";
 
-const products = [
-  {
-    id: 1,
-    name: "Throwback Hip Bag",
-    href: "#",
-    color: "Salmon",
-    price: "$90.00",
-    quantity: 1,
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg",
-    imageAlt:
-      "Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.",
-  },
-  {
-    id: 2,
-    name: "Medium Stuff Satchel",
-    href: "#",
-    color: "Blue",
-    price: "$32.00",
-    quantity: 1,
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
-    imageAlt:
-      "Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
-  },
-  // More products...
-];
-
 export default function ShoppingCarts() {
   const { open, setOpen, selectedProducts, setcountTotal } =
     useContext(Context);
+  // const [subTotal, setsubTotal] = useState(0);
+
+  let subTotal = 0;
+  selectedProducts.map((p) => (subTotal += p.count * p.price));
+  console.log(subTotal);
 
   const selectedTemp = selectedProducts.filter((p) => p.count !== 0);
 
@@ -105,7 +82,7 @@ export default function ShoppingCarts() {
                   <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
                     <div className="flex justify-between text-base font-medium text-gray-900">
                       <p>Subtotal</p>
-                      <p>$262.00</p>
+                      <p>${parseFloat(subTotal).toFixed(2)}</p>
                     </div>
                     <p className="mt-0.5 text-sm text-gray-500">
                       Shipping and taxes calculated at checkout.

@@ -32,9 +32,7 @@ function Product({ product }) {
     const index = selectedProducts.findIndex((item) => item.id === product.id);
     if (index !== -1) {
       var temp = { ...selectedProducts[index] };
-      //console.log(typeof parseInt(temp.count), "eij");
       selectedProducts[index].count = parseInt(temp.count) + 1;
-      //console.log(selectedProducts[index].count);
       temp.count += 1;
     } else {
       const index = products.findIndex((item) => item.id === product.id);
@@ -42,23 +40,18 @@ function Product({ product }) {
       temp.count = 1;
     }
 
-    //setcount(temp.count);
     handleSelectedProducts(temp);
   };
   const handleDecrease = () => {
     const index = selectedProducts.findIndex((item) => item.id === product.id);
     const temp = { ...selectedProducts[index] };
-    //console.log(temp);
     selectedProducts[index].count = parseInt(temp.count) - 1;
-    //console.log(selectedProducts[index].count);
     temp.count -= 1;
 
-    //setcount(temp.count);
     handleSelectedProducts(temp);
   };
   const handleSelectedProducts = (temp) => {
     const index = selectedProducts.findIndex((item) => item.id === temp.id);
-    //console.log(index);
     if (index !== -1) {
       if (temp.count === 0) {
         console.log("here");
@@ -66,7 +59,6 @@ function Product({ product }) {
         setselectedProducts(selectedTemp);
       }
     } else {
-      //console.log("there", count);
       if (temp.count > 0) {
         selectedProducts.push(temp);
       }
@@ -129,13 +121,6 @@ function Product({ product }) {
             <PlusCircle onClick={handleIncrease} />
           </a>
         )}
-        {/* <a
-          href="#"
-          className="justify-center bg-purple-600 rounded-full py-2 px-4 text-gray-50 my-2 xl:my-0 flex flex-row hover:bg-purple-800 object-bottom"
-        >
-          <ArrowRight />
-          <h1>View Details</h1>
-        </a> */}
       </div>
     </div>
   );

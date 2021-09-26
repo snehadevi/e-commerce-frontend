@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../Context API/GlobalContext";
 
-function CartItem({ product }) {
+function CartItem({ product, total }) {
   const { products, selectedProducts, countTotal, setcountTotal } =
     useContext(Context);
   const [count, setcount] = useState(product.count);
@@ -22,6 +22,7 @@ function CartItem({ product }) {
     const index = selectedProducts.findIndex((item) => item.id === product.id);
     if (inputValue !== "") selectedProducts[index].count = parseInt(inputValue);
     if (parseInt(inputValue) <= 0) selectedProducts[index].count = 0;
+
     const tempCount = calculateTotalCount();
     setcountTotal(tempCount);
   };
@@ -41,7 +42,7 @@ function CartItem({ product }) {
             <h3>
               <a href="#">{product.title}</a>
             </h3>
-            <p className="ml-4">{product.price}</p>
+            <p className="ml-4">{count * product.price}</p>
           </div>
           {/* <p className="mt-1 text-sm text-gray-500">
                                     {product.description}
@@ -62,7 +63,7 @@ function CartItem({ product }) {
           <div className="flex">
             <button
               type="button"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
+              className="font-medium text-indigo-600 hover:text-red-500"
             >
               Remove
             </button>

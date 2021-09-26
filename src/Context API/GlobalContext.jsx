@@ -11,6 +11,7 @@ function GlobalContext(props) {
   const [selectedProducts, setselectedProducts] = useState([]);
   //const selectedProducts = products.filter((product) => product.count > 0);
   const [countTotal, setcountTotal] = useState(0);
+
   // var count = 0;
   // selectedProducts.map((p) => {
   //   if (p.count) count += p.count;
