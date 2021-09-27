@@ -4,10 +4,17 @@ import { XIcon } from "@heroicons/react/outline";
 import { ShoppingCart } from "heroicons-react";
 import { Context } from "../Context API/GlobalContext";
 import CartItem from "./CartItem";
+import { Link } from "react-router-dom";
+import CheckOut from "../Pages/CheckOut";
 
 export default function ShoppingCarts() {
-  const { open, setOpen, selectedProducts, setcountTotal } =
-    useContext(Context);
+  const {
+    open,
+    setOpen,
+    selectedProducts,
+    setselectedProducts,
+    setcountTotal,
+  } = useContext(Context);
   // const [subTotal, setsubTotal] = useState(0);
 
   let subTotal = 0;
@@ -15,6 +22,11 @@ export default function ShoppingCarts() {
   console.log(subTotal);
 
   const selectedTemp = selectedProducts.filter((p) => p.count !== 0);
+
+  const handleOnclick = () => {
+    setselectedProducts([]);
+    setcountTotal(0);
+  };
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -87,13 +99,33 @@ export default function ShoppingCarts() {
                     <p className="mt-0.5 text-sm text-gray-500">
                       Shipping and taxes calculated at checkout.
                     </p>
-                    <div className="mt-6">
-                      <a
-                        href="#"
-                        className="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-                      >
-                        Checkout
-                      </a>
+                    <div className="flex flex-row justify-between">
+                      <div className="mt-6">
+                        {selectedProducts.length > 0 ? (
+                          <Link
+                            to="/Home/checkout"
+                            onClick={() => setOpen(false)}
+                            className="flex justify-center items-center px-14 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-800"
+                          >
+                            Checkout
+                          </Link>
+                        ) : (
+                          <a
+                            href="#"
+                            className="flex justify-center items-center px-14 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 cursor-not-allowed"
+                          >
+                            Checkout
+                          </a>
+                        )}
+                      </div>
+                      <div className="mt-6">
+                        <a
+                          onClick={handleOnclick}
+                          className="flex justify-center items-center px-14 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gradient-to-r from-red-600 to-pink-500 hover:from-pink-600 hover:to-pink-600 object-bottom"
+                        >
+                          Clear Cart
+                        </a>
+                      </div>
                     </div>
                     <div className="mt-6 flex justify-center text-sm text-center text-gray-500">
                       <p>

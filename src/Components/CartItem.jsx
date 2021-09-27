@@ -2,13 +2,18 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../Context API/GlobalContext";
 
 function CartItem({ product, total }) {
-  const { products, selectedProducts, countTotal, setcountTotal } =
-    useContext(Context);
+  const {
+    products,
+    selectedProducts,
+    countTotal,
+    setcountTotal,
+    setselectedProducts,
+  } = useContext(Context);
   const [count, setcount] = useState(product.count);
 
-  function calculateTotalCount() {
+  function calculateTotalCount(selectedList) {
     let count = 0;
-    selectedProducts.map((p) => {
+    selectedList.map((p) => {
       if (p.count) count += p.count;
     });
     return count;
@@ -23,9 +28,21 @@ function CartItem({ product, total }) {
     if (inputValue !== "") selectedProducts[index].count = parseInt(inputValue);
     if (parseInt(inputValue) <= 0) selectedProducts[index].count = 0;
 
-    const tempCount = calculateTotalCount();
+    const tempCount = calculateTotalCount(selectedProducts);
     setcountTotal(tempCount);
   };
+
+  const handleOnclick = (product) => {
+    const newProductList = selectedProducts.filter(
+      (item) => item.id !== product.id
+    );
+    console.log(newProductList);
+    setselectedProducts(newProductList);
+
+    const tempCount = calculateTotalCount(newProductList);
+    setcountTotal(tempCount);
+  };
+
   return (
     <li className="py-6 flex">
       <div className="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
@@ -64,6 +81,7 @@ function CartItem({ product, total }) {
             <button
               type="button"
               className="font-medium text-indigo-600 hover:text-red-500"
+              onClick={() => handleOnclick(product)}
             >
               Remove
             </button>

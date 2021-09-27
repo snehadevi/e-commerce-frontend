@@ -2,18 +2,32 @@ import React, { useContext, useState } from "react";
 import { Context } from "../Context API/GlobalContext";
 import { MenuAlt1Outline, ShoppingCartOutline } from "heroicons-react";
 import { Disclosure } from "@headlessui/react";
+import { Link } from "react-router-dom";
 
 const navItem = [
-  { name: "HOME", href: "#", current: true },
-  { name: "SHOP", href: "#", current: false },
-  { name: "BLOG", href: "#", current: false },
-  { name: "CONTACT", href: "#", current: false },
+  { name: "HOME", to: "/Home", current: true },
+  { name: "SHOP", to: "/Shop", current: false },
+  { name: "BLOG", to: "/Blog", current: false },
+  { name: "CONTACT", to: "/Contact", current: false },
 ];
 
 function Navigation() {
   const [hidden, sethidden] = useState(false);
   const { open, setOpen, products, selectedProducts, countTotal } =
     useContext(Context);
+
+  const handleClick = (item) => {
+    navItem.forEach(function (obj) {
+      console.log(obj.name, item.name);
+      if (obj.name !== item.name) {
+        obj.current = false;
+        console.log("clicked");
+      } else {
+        obj.current = true;
+        console.log("not");
+      }
+    });
+  };
 
   return (
     <Disclosure>
@@ -34,27 +48,21 @@ function Navigation() {
             </h1>
           </div>
           <div className="flex flex-row mt-2">
-            <div className="hidden sm:flex flex-row">
-              <div>
-                <a href="#" className="text-gray-600 hover:text-purple-600 p-4">
-                  HOME
-                </a>
-              </div>
-              <div>
-                <a href="#" className="text-gray-600 hover:text-purple-600 p-4">
-                  SHOP
-                </a>
-              </div>
-              <div>
-                <a href="#" className="text-gray-600 hover:text-purple-600 p-4">
-                  BLOG
-                </a>
-              </div>
-              <div>
-                <a href="#" className="text-gray-600 hover:text-purple-600 p-4">
-                  CONTACT
-                </a>
-              </div>
+            <div className="hidden text-sm sm:flex flex-row sm:text-xl">
+              {navItem.map((item) => (
+                <div onClick={() => handleClick(item)} key={item.name}>
+                  <Link
+                    to={item.to}
+                    className={
+                      item.current
+                        ? "bg-purple-500 text-white p-4"
+                        : "text-gray-600 hover:text-purple-600 p-4"
+                    }
+                  >
+                    {item.name}
+                  </Link>
+                </div>
+              ))}
             </div>
             <div className="flex flex-row">
               <div>
