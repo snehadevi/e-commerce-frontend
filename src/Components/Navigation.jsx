@@ -3,6 +3,7 @@ import { Context } from "../Context API/GlobalContext";
 import { MenuAlt1Outline, ShoppingCartOutline } from "heroicons-react";
 import { Disclosure } from "@headlessui/react";
 import { Link } from "react-router-dom";
+import ShoppingCarts from "./ShoppingCarts";
 
 const navItem = [
   { name: "HOME", to: "/Home", current: true },
@@ -18,19 +19,20 @@ function Navigation() {
 
   const handleClick = (item) => {
     navItem.forEach(function (obj) {
-      console.log(obj.name, item.name);
+      //console.log(obj.name, item.name);
       if (obj.name !== item.name) {
         obj.current = false;
-        console.log("clicked");
+        //console.log("clicked");
       } else {
         obj.current = true;
-        console.log("not");
+        //console.log("not");
       }
     });
   };
 
   return (
     <Disclosure>
+      <ShoppingCarts />
       <div className="fixed w-full bg-white shadow-lg flex flex-col top-0 p-3">
         <div className="flex flex-row justify-between">
           <div className="flex flex-row">

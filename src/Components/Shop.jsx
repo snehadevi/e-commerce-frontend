@@ -14,7 +14,6 @@ export default function Shop() {
 
   return (
     <div>
-      <ShoppingCarts />
       <div className="bg-white">
         <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-screen-2xl lg:px-8">
           {/* <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">

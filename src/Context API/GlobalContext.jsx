@@ -26,7 +26,7 @@ function GlobalContext(props) {
 
       setproducts(newData);
     } else {
-      console.log("bye");
+      //console.log("bye");
       const { data } = await axios.get("https://fakestoreapi.com/products");
       const newData = data.map((d) => ({ ...d, count: 0 }));
       newData.map((d) => counts.push({ [d.id]: d.count }));

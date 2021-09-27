@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import Navigation from "../Components/Navigation";
 import { Context } from "../Context API/GlobalContext";
 import { Link } from "react-router-dom";
-function Success() {
-  const { selectedProducts } = useContext(Context);
-  let subTotal = 0;
-  selectedProducts.map((p) => (subTotal += p.count * p.price));
+function Success({ subTotal, selectedProducts }) {
+  // const { selectedProducts } = useContext(Context);
+  // let subTotal = 0;
+  // selectedProducts.map((p) => (subTotal += p.count * p.price));
   return (
     <div className="">
       <div className="relative container grid grid-cols items-start pb-16 pt-4 mx-auto mt-20">

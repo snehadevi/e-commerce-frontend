@@ -19,7 +19,7 @@ export default function ShoppingCarts() {
 
   let subTotal = 0;
   selectedProducts.map((p) => (subTotal += p.count * p.price));
-  console.log(subTotal);
+  //console.log(subTotal);
 
   const selectedTemp = selectedProducts.filter((p) => p.count !== 0);
 

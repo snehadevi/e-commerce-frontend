@@ -36,7 +36,7 @@ function CartItem({ product, total }) {
     const newProductList = selectedProducts.filter(
       (item) => item.id !== product.id
     );
-    console.log(newProductList);
+    //console.log(newProductList);
     setselectedProducts(newProductList);
 
     const tempCount = calculateTotalCount(newProductList);

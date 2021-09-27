@@ -18,7 +18,7 @@ function Product({ product }) {
 
   const index = selectedProducts.findIndex((item) => item.id === product.id);
   const count = index !== -1 ? selectedProducts[index].count : 0;
-  console.log(count, "hii");
+  //console.log(count, "hii");
 
   function calculateTotalCount() {
     let count = 0;
@@ -54,7 +54,7 @@ function Product({ product }) {
     const index = selectedProducts.findIndex((item) => item.id === temp.id);
     if (index !== -1) {
       if (temp.count === 0) {
-        console.log("here");
+        //console.log("here");
         const selectedTemp = selectedProducts.filter((p) => p.id !== temp.id);
         setselectedProducts(selectedTemp);
       }
