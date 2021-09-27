@@ -2,6 +2,7 @@ import Navigation from "./Navigation";
 import React, { useState, useEffect, useContext } from "react";
 import Product from "./CommonComponents/product";
 import { Context } from "../Context API/GlobalContext";
+import CartItem from "./CartItem";
 
 export default function Shop() {
   const { products } = useContext(Context);
@@ -17,7 +18,7 @@ export default function Shop() {
           </div>
         </div>
       </div>
-      <Navigation />
+      <Navigation currentItem="HOME" />
     </div>
   );
 }

@@ -10,6 +10,7 @@ function GlobalContext(props) {
   let productList = localStorage.getItem("products");
   const [selectedProducts, setselectedProducts] = useState([]);
   const [countTotal, setcountTotal] = useState(0);
+  const [orderList, setorderList] = useState([]);
 
   function calculateTotalCount(selectedList) {
     let count = 0;
@@ -48,6 +49,8 @@ function GlobalContext(props) {
         setcountTotal,
         setselectedProducts,
         calculateTotalCount,
+        orderList,
+        setorderList,
       }}
     >
       {props.children}

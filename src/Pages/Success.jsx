@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import Navigation from "../Components/Navigation";
 import { Context } from "../Context API/GlobalContext";
 import { Link } from "react-router-dom";
-function Success({ subTotal, selectedProducts }) {
-  // const { selectedProducts } = useContext(Context);
-  // let subTotal = 0;
-  // selectedProducts.map((p) => (subTotal += p.count * p.price));
+function Success({ history }) {
+  const { orderList } = useContext(Context);
+  if (!orderList || orderList.length === 0) history.push("/Home");
+  let subTotal = 0;
+  orderList.map((p) => (subTotal += p.count * p.price));
   return (
     <div className="">
       <div className="relative container grid grid-cols items-start pb-16 pt-4 mx-auto mt-20">
@@ -25,7 +26,7 @@ function Success({ subTotal, selectedProducts }) {
               <h4 className="text-gray-800 text-lg mb-4 font-medium uppercase">
                 Order Summery
               </h4>
-              {selectedProducts.map((item) => (
+              {orderList.map((item) => (
                 //(item) => console.log(item.name)
                 <div
                   className="flex justify-between p-2 border-b border-gray-200"
@@ -93,7 +94,7 @@ function Success({ subTotal, selectedProducts }) {
           </div>
         </div>
       </div>
-      <Navigation />
+      <Navigation currentItem="" />
     </div>
   );
 }

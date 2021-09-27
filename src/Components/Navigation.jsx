@@ -7,12 +7,12 @@ import ShoppingCarts from "./ShoppingCarts";
 
 const navItem = [
   { name: "HOME", to: "/Home", current: true },
-  { name: "SHOP", to: "/Shop", current: false },
   { name: "BLOG", to: "/Blog", current: false },
   { name: "CONTACT", to: "/Contact", current: false },
 ];
 
-function Navigation() {
+function Navigation({ currentItem }) {
+  //console.log(currentItem);
   const [hidden, sethidden] = useState(false);
   const { open, setOpen, countTotal } = useContext(Context);
 
@@ -55,7 +55,7 @@ function Navigation() {
                   <Link
                     to={item.to}
                     className={
-                      item.current
+                      item.name === currentItem
                         ? "bg-purple-500 text-white p-4"
                         : "text-gray-600 hover:text-purple-600 p-4"
                     }
@@ -83,14 +83,14 @@ function Navigation() {
           {hidden && (
             <div className="px-2 pt-2 pb-3 space-y-1 text-gray-600 sm:hidden">
               {navItem.map((item) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
+                  to={item.to}
                   className="block px-3 py-2 rounded-md text-base font-medium hover:text-purple-600"
                   aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
             </div>
           )}

@@ -4,7 +4,7 @@ function Contact() {
   return (
     <div>
       <h1 className="mt-20">Contact Us</h1>
-      <Navigation />
+      <Navigation currentItem="CONTACT" />
     </div>
   );
 }
