@@ -9,14 +9,15 @@ function GlobalContext(props) {
   const [open, setOpen] = useState(false);
   let productList = localStorage.getItem("products");
   const [selectedProducts, setselectedProducts] = useState([]);
-  //const selectedProducts = products.filter((product) => product.count > 0);
   const [countTotal, setcountTotal] = useState(0);
 
-  // var count = 0;
-  // selectedProducts.map((p) => {
-  //   if (p.count) count += p.count;
-  //   setcountTotal(count);
-  // });
+  function calculateTotalCount(selectedList) {
+    let count = 0;
+    selectedList.map((p) => {
+      if (p.count) count += p.count;
+    });
+    return count;
+  }
 
   useEffect(async () => {
     if (productList) {
@@ -46,6 +47,7 @@ function GlobalContext(props) {
         countTotal,
         setcountTotal,
         setselectedProducts,
+        calculateTotalCount,
       }}
     >
       {props.children}

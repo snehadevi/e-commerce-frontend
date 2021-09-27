@@ -14,8 +14,7 @@ const navItem = [
 
 function Navigation() {
   const [hidden, sethidden] = useState(false);
-  const { open, setOpen, products, selectedProducts, countTotal } =
-    useContext(Context);
+  const { open, setOpen, countTotal } = useContext(Context);
 
   const handleClick = (item) => {
     navItem.forEach(function (obj) {
@@ -33,7 +32,7 @@ function Navigation() {
   return (
     <Disclosure>
       <ShoppingCarts />
-      <div className="fixed w-full bg-white shadow-lg flex flex-col top-0 p-3">
+      <div className="fixed w-full bg-indigo-200 shadow-lg flex flex-col top-0 p-3">
         <div className="flex flex-row justify-between">
           <div className="flex flex-row">
             <div>
@@ -77,14 +76,6 @@ function Navigation() {
                   {countTotal}
                 </a>
               </div>
-              {/* <div>
-            <a
-              href="#"
-              className="text-gray-600 hover:text-purple-600 sm:hidden"
-            >
-              <MenuAlt1Outline />
-            </a>
-          </div> */}
             </div>
           </div>
         </div>

@@ -1,32 +1,33 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Context } from "../Context API/GlobalContext";
 
 function CartItem({ product, total }) {
   const {
-    products,
     selectedProducts,
-    countTotal,
     setcountTotal,
     setselectedProducts,
+    calculateTotalCount,
   } = useContext(Context);
   const [count, setcount] = useState(product.count);
 
-  function calculateTotalCount(selectedList) {
-    let count = 0;
-    selectedList.map((p) => {
-      if (p.count) count += p.count;
-    });
-    return count;
-  }
+  // function calculateTotalCount(selectedList) {
+  //   let count = 0;
+  //   selectedList.map((p) => {
+  //     if (p.count) count += p.count;
+  //   });
+  //   return count;
+  // }
 
   const handleChange = (e) => {
     const inputValue = e.target.value;
-    //console.log(inputValue, "l");
-    //console.log(isNaN(inputValue), inputValue);
+
     setcount(inputValue);
     const index = selectedProducts.findIndex((item) => item.id === product.id);
     if (inputValue !== "") selectedProducts[index].count = parseInt(inputValue);
-    if (parseInt(inputValue) <= 0) selectedProducts[index].count = 0;
+    if (parseInt(inputValue) <= 0) {
+      selectedProducts[index].count = 0;
+      setselectedProducts(selectedProducts.filter((p) => p.count > 0));
+    }
 
     const tempCount = calculateTotalCount(selectedProducts);
     setcountTotal(tempCount);

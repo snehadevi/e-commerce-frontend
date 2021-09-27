@@ -10,23 +10,14 @@ import { Context } from "../../Context API/GlobalContext";
 function Product({ product }) {
   const {
     products,
-    countTotal,
     setcountTotal,
     selectedProducts,
     setselectedProducts,
+    calculateTotalCount,
   } = useContext(Context);
 
   const index = selectedProducts.findIndex((item) => item.id === product.id);
   const count = index !== -1 ? selectedProducts[index].count : 0;
-  //console.log(count, "hii");
-
-  function calculateTotalCount() {
-    let count = 0;
-    selectedProducts.map((p) => {
-      if (p.count) count += p.count;
-    });
-    return count;
-  }
 
   const handleIncrease = () => {
     const index = selectedProducts.findIndex((item) => item.id === product.id);
@@ -63,7 +54,7 @@ function Product({ product }) {
         selectedProducts.push(temp);
       }
     }
-    let tempCount = calculateTotalCount();
+    let tempCount = calculateTotalCount(selectedProducts);
     setcountTotal(tempCount);
   };
 

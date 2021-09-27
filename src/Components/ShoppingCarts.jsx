@@ -1,11 +1,9 @@
 import { Fragment, useState, useContext } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
-import { ShoppingCart } from "heroicons-react";
 import { Context } from "../Context API/GlobalContext";
 import CartItem from "./CartItem";
 import { Link } from "react-router-dom";
-import CheckOut from "../Pages/CheckOut";
 
 export default function ShoppingCarts() {
   const {
@@ -21,7 +19,7 @@ export default function ShoppingCarts() {
   selectedProducts.map((p) => (subTotal += p.count * p.price));
   //console.log(subTotal);
 
-  const selectedTemp = selectedProducts.filter((p) => p.count !== 0);
+  // const selectedTemp = selectedProducts.filter((p) => p.count !== 0);
 
   const handleOnclick = () => {
     setselectedProducts([]);
@@ -83,7 +81,7 @@ export default function ShoppingCarts() {
                           role="list"
                           className="-my-6 divide-y divide-gray-200"
                         >
-                          {selectedTemp.map((product) => (
+                          {selectedProducts.map((product) => (
                             <CartItem product={product} key={product.id} />
                           ))}
                         </ul>
