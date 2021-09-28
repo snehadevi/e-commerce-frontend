@@ -103,12 +103,12 @@ export default function ShoppingCarts() {
                           <Link
                             to="/checkout"
                             onClick={() => setOpen(false)}
-                            className="flex justify-center items-center px-14 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-800"
+                            className="flex justify-center items-center px-3 sm:px-14 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-800"
                           >
                             Checkout
                           </Link>
                         ) : (
-                          <a className="flex justify-center items-center px-14 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 cursor-not-allowed">
+                          <a className="flex justify-center items-center px-3 sm:px-14 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 cursor-not-allowed">
                             Checkout
                           </a>
                         )}
@@ -116,7 +116,7 @@ export default function ShoppingCarts() {
                       <div className="mt-6">
                         <a
                           onClick={handleOnclick}
-                          className="flex justify-center items-center px-14 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gradient-to-r from-red-600 to-pink-500 hover:from-pink-600 hover:to-pink-600 object-bottom"
+                          className="flex justify-center items-center px-3 sm:px-14 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gradient-to-r from-red-600 to-pink-500 hover:from-pink-600 hover:to-pink-600 object-bottom"
                         >
                           Clear Cart
                         </a>
