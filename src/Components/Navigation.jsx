@@ -40,10 +40,12 @@ function Navigation({ currentItem }) {
                 <MenuAlt1Outline onClick={() => sethidden(!hidden)} />
               </a>
             </div>
-            <div className="sm:bg-gradient-to-r from-purple-400 to-red-400 w-10 h-10 rounded-lg"></div>
-            <h1 className="text-lg text-gray-600 sm:text-xl sm:mt-1 sm:ml-2 lg:text-3xl">
-              SHOP CIRCLE
-            </h1>
+            <Link to="/" className="flex flex-row">
+              <div className="sm:bg-gradient-to-r from-purple-400 to-red-400 w-10 h-10 rounded-lg"></div>
+              <h1 className="text-lg text-gray-600 sm:text-xl sm:mt-1 sm:ml-2 lg:text-3xl">
+                SHOP CIRCLE
+              </h1>
+            </Link>
           </div>
           <div className="flex flex-row mt-2">
             <div className="hidden text-sm sm:flex flex-row sm:text-xl">
