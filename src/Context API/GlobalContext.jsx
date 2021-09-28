@@ -22,19 +22,11 @@ function GlobalContext(props) {
 
   useEffect(async () => {
     if (productList) {
-      //console.log("hi");
       const data = JSON.parse(productList);
       setproducts(data);
-      //const newData = data.map((d) => ({ ...d, count: 0 }));
-
-      //setproducts(newData);
     } else {
-      //console.log("bye");
       const { data } = await axios.get("https://fakestoreapi.com/products");
       setproducts(data);
-      // const newData = data.map((d) => ({ ...d, count: 0 }));
-      // newData.map((d) => counts.push({ [d.id]: d.count }));
-      // setproducts(newData);
       localStorage.setItem("products", JSON.stringify(data));
     }
   }, []);
