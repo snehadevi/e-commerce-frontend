@@ -108,10 +108,7 @@ export default function ShoppingCarts() {
                             Checkout
                           </Link>
                         ) : (
-                          <a
-                            href="#"
-                            className="flex justify-center items-center px-14 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 cursor-not-allowed"
-                          >
+                          <a className="flex justify-center items-center px-14 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 cursor-not-allowed">
                             Checkout
                           </a>
                         )}

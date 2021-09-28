@@ -71,7 +71,7 @@ function Product({ product }) {
         <div className="h-60 sm:h-32 mt-4 flex justify-between">
           <div className="justify-between mr-5">
             <h3 className="text-sm text-gray-700">
-              <a href="#">
+              <a>
                 <span aria-hidden="true" className="absolute inset-0" />
                 {product.title}
               </a>
@@ -86,16 +86,12 @@ function Product({ product }) {
           <div className="justify-between xl:flex flex-row ">
             <a
               onClick={handleIncrease}
-              href="#"
               className="justify-center bg-gradient-to-r from-red-600 to-pink-500 rounded-full py-2 px-4 text-gray-50 flex flex-row hover:from-pink-600 hover:to-pink-600 object-bottom"
             >
               <ShoppingCartOutline />
               <h1>Add to cart</h1>
             </a>
-            <a
-              href="#"
-              className="justify-center bg-purple-600 rounded-full py-2 px-4 text-gray-50 my-2 xl:my-0 flex flex-row hover:bg-purple-800 object-bottom"
-            >
+            <a className="justify-center bg-purple-600 rounded-full py-2 px-4 text-gray-50 my-2 xl:my-0 flex flex-row hover:bg-purple-800 object-bottom">
               <ArrowRight />
               <h1>View Details</h1>
             </a>
@@ -103,10 +99,7 @@ function Product({ product }) {
         )}
 
         {count > 0 && (
-          <a
-            href="#"
-            className="justify-center bg-gradient-to-r from-red-600 to-pink-500 rounded-full py-2 px-6 text-gray-50 flex flex-row hover:from-pink-600 hover:to-pink-600 object-bottom"
-          >
+          <a className="justify-center bg-gradient-to-r from-red-600 to-pink-500 rounded-full py-2 px-6 text-gray-50 flex flex-row hover:from-pink-600 hover:to-pink-600 object-bottom">
             <MinusCircle onClick={handleDecrease} />
             <h1 className="text-gray-50 mx-3">{count}</h1>
             <PlusCircle onClick={handleIncrease} />

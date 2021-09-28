@@ -36,10 +36,7 @@ function Navigation({ currentItem }) {
         <div className="flex flex-row justify-between">
           <div className="flex flex-row">
             <div>
-              <a
-                href="#"
-                className="text-gray-600 hover:text-purple-600 sm:hidden"
-              >
+              <a className="text-gray-600 hover:text-purple-600 sm:hidden">
                 <MenuAlt1Outline onClick={() => sethidden(!hidden)} />
               </a>
             </div>
@@ -69,7 +66,6 @@ function Navigation({ currentItem }) {
               <div>
                 <a
                   onClick={() => setOpen(true)}
-                  href="#"
                   className="bg-purple-600 text-gray-50 hover:bg-purple-700 p-3 px-5 rounded-full sm:mr-5"
                 >
                   <ShoppingCartOutline className="inline-block" />
