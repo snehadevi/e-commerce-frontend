@@ -85,7 +85,7 @@ function Success({ history }) {
             </div>
             <div>
               <Link
-                to="/Home"
+                to="/"
                 className="block mx-auto w-60 text-center border border-purple-600 px-4 py-3 text-lg rounded-full bg-purple-600 text-white mb-4"
               >
                 <h1>Return Home</h1>

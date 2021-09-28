@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import ShoppingCarts from "./ShoppingCarts";
 
 const navItem = [
-  { name: "HOME", to: "/Home", current: true },
+  { name: "HOME", to: "/", current: true },
   { name: "BLOG", to: "/Blog", current: false },
   { name: "CONTACT", to: "/Contact", current: false },
 ];

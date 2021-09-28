@@ -16,13 +16,12 @@ function Routing() {
       <Switch>
         {/* <Route path="/Home/:id" component={ViewDetails} /> */}
         {/* <Route path="/not_found" component={NotFound} /> */}
-        <Route exactpath="/" component={Shop} />
-        <Route exact path="/Home" component={Shop} />
-        <Route exact path="/Home/checkout" component={CheckOut} />
-        <Route exact path="/Home/checkout/Success" component={Success} />
+        <Route exact path="/" component={Shop} />
+        <Route exact path="/checkout" component={CheckOut} />
+        <Route exact path="/checkout/Success" component={Success} />
         <Route exact path="/Contact" component={Contact} />
         <Route exact path="/Blog" component={Blog} />
-        <Redirect from="/" exact to="/Home" />
+        {/* <Redirect from="/" exact to="/Home" /> */}
         <Route path="*" component={NotFound} />
       </Switch>
     </div>

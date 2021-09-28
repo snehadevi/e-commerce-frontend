@@ -101,7 +101,7 @@ export default function ShoppingCarts() {
                       <div className="mt-6">
                         {selectedProducts.length > 0 ? (
                           <Link
-                            to="/Home/checkout"
+                            to="/checkout"
                             onClick={() => setOpen(false)}
                             className="flex justify-center items-center px-14 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-800"
                           >

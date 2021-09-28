@@ -13,7 +13,7 @@ function CheckOut({ history }) {
   } = useContext(Context);
   //console.log(selectedProducts);
 
-  if (selectedProducts.length === 0) history.push("/Home");
+  if (selectedProducts.length === 0) history.push("/");
 
   const [hidden, sethidden] = useState(true);
 
@@ -29,7 +29,7 @@ function CheckOut({ history }) {
     setorderList(selectedProducts);
     setselectedProducts([]);
     setcountTotal(0);
-    history.push("/Home/checkout/Success");
+    history.push("/checkout/Success");
   };
   return (
     <div>
@@ -205,7 +205,7 @@ function CheckOut({ history }) {
         </form>
         <div>
           <Link
-            to="/Home"
+            to="/"
             className="block mx-auto w-60 text-center border border-purple-600 px-4 py-3 text-lg rounded-full bg-purple-600 text-white"
           >
             <h1>Return Home</h1>
