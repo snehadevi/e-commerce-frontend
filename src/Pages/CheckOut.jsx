@@ -36,7 +36,7 @@ function CheckOut({ history }) {
       {/* {hidden && ( */}
       <div className="bg-gray-50">
         <form id="myForm" onSubmit={handleSubmit}>
-          <div className="relative container gap-6 grid grid-cols-12 items-start pb-16 pt-4 mx-auto mt-20">
+          <div className="pb-16 pt-4 mx-auto mt-20 sm: relative container gap-6 sm:grid grid-cols-12 items-start">
             <div className="bg-gray-50 col-span-8 border border-gray-300 p-4 rounded shadow-lg">
               <h3 className="text-lg font-medium capitalize mb-4">
                 Shipping & Contact Information
@@ -153,7 +153,7 @@ function CheckOut({ history }) {
                   //(item) => console.log(item.name)
                   <div className="flex justify-between" key={item.id}>
                     <div>
-                      <h5 className="w-44 text-gray-800 font-medium">
+                      <h5 className="w-24 sm:w-44 text-gray-800 font-medium">
                         {item.title}
                       </h5>
                       <p className="text-sm text-gray-600">{item.category}</p>
@@ -189,13 +189,10 @@ function CheckOut({ history }) {
                   className="text-gray-600 ml-3 cursor-pointer text-sm"
                 >
                   Agree to our{" "}
-                  <a href="#" className="text-purple-700">
-                    terms & conditions
-                  </a>
+                  <a className="text-purple-700">terms & conditions</a>
                 </label>
               </div>
               <input
-                href="#"
                 className="bg-white w-full block text-center text-purple-600 bg-primary border border-purple-600 px-4 py-3 font-medium rounded-md hover:bg-purple-600 hover:text-white"
                 value="Place Order"
                 type="submit"
