@@ -24,15 +24,17 @@ function GlobalContext(props) {
     if (productList) {
       //console.log("hi");
       const data = JSON.parse(productList);
-      const newData = data.map((d) => ({ ...d, count: 0 }));
+      setproducts(data);
+      //const newData = data.map((d) => ({ ...d, count: 0 }));
 
-      setproducts(newData);
+      //setproducts(newData);
     } else {
       //console.log("bye");
       const { data } = await axios.get("https://fakestoreapi.com/products");
-      const newData = data.map((d) => ({ ...d, count: 0 }));
-      newData.map((d) => counts.push({ [d.id]: d.count }));
-      setproducts(newData);
+      setproducts(data);
+      // const newData = data.map((d) => ({ ...d, count: 0 }));
+      // newData.map((d) => counts.push({ [d.id]: d.count }));
+      // setproducts(newData);
       localStorage.setItem("products", JSON.stringify(data));
     }
   }, []);

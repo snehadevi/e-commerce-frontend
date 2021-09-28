@@ -21,8 +21,8 @@ function Routing() {
         <Route exact path="/Home/checkout/Success" component={Success} />
         <Route exact path="/Contact" component={Contact} />
         <Route exact path="/Blog" component={Blog} />
-        <Route path="*" component={NotFound} />
         <Redirect from="/" exact to="/Home" />
+        <Route path="*" component={NotFound} />
       </Switch>
     </div>
   );

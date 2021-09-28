@@ -32,7 +32,7 @@ function Navigation({ currentItem }) {
   return (
     <Disclosure>
       <ShoppingCarts />
-      <div className="fixed w-full bg-indigo-200 shadow-lg flex flex-col top-0 p-3">
+      <div className="fixed w-full bg-gray-200 shadow-lg flex flex-col top-0 p-3">
         <div className="flex flex-row justify-between">
           <div className="flex flex-row">
             <div>
