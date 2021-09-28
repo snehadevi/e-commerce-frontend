@@ -16,6 +16,7 @@ function Routing() {
       <Switch>
         {/* <Route path="/Home/:id" component={ViewDetails} /> */}
         {/* <Route path="/not_found" component={NotFound} /> */}
+        <Route exactpath="/" component={Shop} />
         <Route exact path="/Home" component={Shop} />
         <Route exact path="/Home/checkout" component={CheckOut} />
         <Route exact path="/Home/checkout/Success" component={Success} />
